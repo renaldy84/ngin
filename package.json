@@ -1,0 +1,17 @@
+{
+  "author": "Petr Janda <petrjanda@me.com> (http://www.twitter.com/petrjanda)",
+  "name": "ngin",
+  "description": "application server for node.js",
+  "version": "0.0.1",
+  "homepage": "http://www.twitter.com/petrjanda",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/petrjanda/ngin.git"
+  },
+  "main": "lib/ngin.js",
+  "engines": {
+    "node": "~v0.4.2"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
