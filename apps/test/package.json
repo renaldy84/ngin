@@ -10,7 +10,7 @@
     "url": "git://github.com/petrjanda/ngin.git"
   },
 
-  "main": "lib/ngin.js",
+  "main": "server.js",
 
   "engines": {
     "node": "~v0.4.2"
