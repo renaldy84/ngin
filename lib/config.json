@@ -1,6 +1,7 @@
 {
-	"directories": {
-		"apps": "/Users/petr/incubator/ngin/apps"
+	"paths": {
+		"apps": "/Users/petr/incubator/ngin/apps",
+		"pidfile": "/Users/petr/incubator/ngin/apps.pid"
 	},
 	"portMin": 3000
 }
