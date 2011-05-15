@@ -14,18 +14,18 @@ using namespace v8;
  
 static Handle<Value> daemonize(const Arguments& args)
 {
-	//pid_t pID = fork();
+	pid_t pID = fork();
 
-	//if(pID > 0)
-	//	exit(0);
-		
-	//if(pID < 0)
-	//	exit(1);
+	if(pID > 0)
+		exit(0);
+	
+	if(pID < 0)
+		exit(1);
 
-	//umask(0);
+	umask(0);
 
-	//if(setsid() < 0)
-	//	exit(1);
+	if(setsid() < 0)
+		exit(1);
 
 	return Integer::New(getpid());
 }
