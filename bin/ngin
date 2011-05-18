@@ -1,9 +1,14 @@
 #!/usr/bin/env node
 
 var fs = require('fs'),
-	path = require('path');
+	path = require('path'),
+	Server = require('../lib/ngin/server.js');
 
 var version = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8')).version;
+
+var path = '.';
+
+var options = {};
 
 var args = process.argv.slice(2);
 var name = process.argv.slice(1)[0].split('/').pop();
@@ -35,6 +40,9 @@ while (args.length) {
 		case '--version':
 			abort(version);
 		break;
+		
+		default:
+			path = arg;
   }
 }
 
@@ -42,3 +50,6 @@ function abort(str) {
   console.error(str);
   process.exit(1);
 }
+
+var server = new Server(path, options);
+server.start();
