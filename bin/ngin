@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+
+var fs = require('fs'),
+	path = require('path');
+
+var version = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8')).version;
+
+var args = process.argv.slice(2);
+var name = process.argv.slice(1)[0].split('/').pop();
+
+var usage = [
+	'',
+	'  Usage: ' + name + ' [options] [apps_path]',
+	'',
+	'  Options:',
+	'    -c, --config <path>      path to the configuration file',
+	'    -p, --port <engine>      server port',
+	'    -v, --version            get current installed version'
+].join('\n');
+
+if(args.length == 0)
+	abort(usage);
+
+while (args.length) {
+	var arg = args.shift();
+
+	switch (arg) {
+		
+		case '-h':
+		case '--help':
+			abort(usage);
+			break;
+
+		case '-v':
+		case '--version':
+			abort(version);
+		break;
+  }
+}
+
+function abort(str) {
+  console.error(str);
+  process.exit(1);
+}
