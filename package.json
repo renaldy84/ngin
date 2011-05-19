@@ -2,7 +2,7 @@
   "author": "Petr Janda <petrjanda@me.com> (http://www.twitter.com/petrjanda)",
   "name": "ngin",
   "description": "application server for node.js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "homepage": "http://www.twitter.com/petrjanda",
 
   "repository": {
