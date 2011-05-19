@@ -4,8 +4,6 @@ var fs = require('fs'),
 	path = require('path'),
 	Server = require('../lib/ngin/server.js');
 
-var version = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8')).version;
-
 var path = '.';
 
 var options = {};
@@ -38,7 +36,7 @@ while (args.length) {
 
 		case '-v':
 		case '--version':
-			abort(version);
+			abort(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8')).version);
 		break;
 		
 		default:
