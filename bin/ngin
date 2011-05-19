@@ -6,6 +6,8 @@ var fs = require('fs'),
 
 var path = '.';
 
+var port = null;
+
 var options = {};
 
 var args = process.argv.slice(2);
@@ -16,8 +18,7 @@ var usage = [
 	'  Usage: ' + name + ' [options] [apps_path]',
 	'',
 	'  Options:',
-	'    -c, --config <path>      path to the configuration file',
-	'    -p, --port <engine>      server port',
+	'    -p, --port <port>        server port',
 	'    -v, --version            get current installed version'
 ].join('\n');
 
@@ -34,6 +35,11 @@ while (args.length) {
 			abort(usage);
 			break;
 
+		case '-p':
+		case '--port':
+			port = arg;
+			break;
+
 		case '-v':
 		case '--version':
 			abort(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8')).version);
@@ -47,6 +53,10 @@ while (args.length) {
 function abort(str) {
   console.error(str);
   process.exit(1);
+}
+
+options = {
+	port: port || 3000
 }
 
 var server = new Server(path, options);
