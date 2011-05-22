@@ -3,6 +3,7 @@
 var fs = require('fs'),
 	path = require('path'),
 	logger = require('../lib/ngin/plugins/logger.js'),
+	httpproxy = require('../lib/ngin/plugins/httpproxy.js'),
 	Server = require('../lib/ngin/server.js');
 
 var path = '.';
@@ -62,4 +63,7 @@ options = {
 }
 
 var server = new Server(options);
-server.use(logger).start();
+server
+.use(logger)
+.use(httpproxy)
+.start();
