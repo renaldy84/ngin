@@ -13,7 +13,7 @@
   "main": "lib/ngin.js",
 
   "engines": {
-    "node": "~v0.4.2"
+    "node": "v0.4.2"
   },
 
   "dependencies": {},
