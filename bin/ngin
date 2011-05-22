@@ -2,6 +2,7 @@
 
 var fs = require('fs'),
 	path = require('path'),
+	logger = require('../lib/ngin/plugins/logger.js'),
 	Server = require('../lib/ngin/server.js');
 
 var path = '.';
@@ -61,4 +62,4 @@ options = {
 }
 
 var server = new Server(options);
-server.start();
+server.use(logger).start();
