@@ -2,6 +2,8 @@
 
 var fs = require('fs'),
 	path = require('path'),
+	logger = require('../lib/ngin/plugins/logger.js'),
+	httpproxy = require('../lib/ngin/plugins/httpproxy.js'),
 	Server = require('../lib/ngin/server.js');
 
 var path = '.';
@@ -56,8 +58,12 @@ function abort(str) {
 }
 
 options = {
-	port: port || 3000
+	port: port || 3000,
+	appsPath: path
 }
 
 var server = new Server(options);
-server.startApps(path);
+server
+.use(logger)
+.use(httpproxy)
+.start();
