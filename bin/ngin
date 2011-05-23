@@ -67,5 +67,8 @@ var server = new Server(options);
 server
 .use(dns)
 .use(logger)
-.use(httpproxy, {port: port})
+.use(httpproxy, {port: port, domains: {
+  'express.dev': 'express'
+  
+}})
 .start();

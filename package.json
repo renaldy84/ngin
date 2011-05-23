@@ -17,7 +17,8 @@
   },
 
   "dependencies": {
-    "ndns": "0.1.1"
+    "ndns": "0.1.1",
+    "npm": "1.0.6"
   },
 
   "devDependencies": {}
