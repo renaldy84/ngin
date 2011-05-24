@@ -5,6 +5,7 @@ var fs = require('fs'),
     logger = require('../lib/ngin/plugins/logger.js'),
     dns = require('../lib/ngin/plugins/dns.js'),
     httpproxy = require('../lib/ngin/plugins/httpproxy.js'),
+    npm = require('../lib/ngin/plugins/npm.js'),
     Server = require('../lib/ngin/server.js');
 
 var path = '.';
@@ -40,7 +41,7 @@ while (args.length) {
 
 		case '-p':
 		case '--port':
-			port = arg;
+			port = args.shift();
 			break;
 
 		case '-v':
@@ -67,8 +68,8 @@ var server = new Server(options);
 server
 .use(dns)
 .use(logger)
+.use(npm)
 .use(httpproxy, {port: port, domains: {
-  'express.dev': 'express'
-  
+  'nginjs.com': 'ngin-docs'
 }})
 .start();
