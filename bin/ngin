@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
 var fs = require('fs'),
-	path = require('path'),
-	logger = require('../lib/ngin/plugins/logger.js'),
-	httpproxy = require('../lib/ngin/plugins/httpproxy.js'),
-	Server = require('../lib/ngin/server.js');
+    path = require('path'),
+    logger = require('../lib/ngin/plugins/logger.js'),
+    dns = require('../lib/ngin/plugins/dns.js'),
+    httpproxy = require('../lib/ngin/plugins/httpproxy.js'),
+    npm = require('../lib/ngin/plugins/npm.js'),
+    Server = require('../lib/ngin/server.js');
 
 var path = '.';
 
@@ -39,7 +41,7 @@ while (args.length) {
 
 		case '-p':
 		case '--port':
-			port = arg;
+			port = args.shift();
 			break;
 
 		case '-v':
@@ -64,6 +66,10 @@ options = {
 
 var server = new Server(options);
 server
+.use(dns)
 .use(logger)
-.use(httpproxy)
+.use(npm)
+.use(httpproxy, {port: port, domains: {
+  'nginjs.com': 'ngin-docs'
+}})
 .start();
