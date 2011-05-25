@@ -15,9 +15,10 @@ information for ngin server and is the standard way how the node.js application 
 <pre>
   <code>git clone git://github.com/petrjanda/ngin.git
   cd ngin/
-  mkdir apps/
-  ln -s /path/to/your/app apps/appname
-  bin/ngin --port 80 apps/</code>
+  npm install     # Install necessary dependencies.
+  mkdir apps/     # You could make your apps directory wherever you want.
+  ln -s /path/to/your/app apps/appname     # Simple symlink is enough to attach your app to server.
+  bin/ngin --port 80 apps/</code>     # And here we go!
 </pre>
 
 Your server will spawn each application and proxy will take care of the proper routing. Once DNS plugin is done, you can use proxy + dns together to setup super easy development server, where you can access your apps like <code>http://appname.dev/.</code>
