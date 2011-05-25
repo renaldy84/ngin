@@ -21,7 +21,7 @@ information for ngin server and is the standard way how the node.js application 
   bin/ngin --port 80 apps/                 # And here we go!</code>
 </pre>
 
-Your server will spawn each application and proxy will take care of the proper routing. Once DNS plugin is done, you can use proxy + dns together to setup super easy development server, where you can access your apps like <code>http://appname.dev/.</code>
+Your server will spawn each application and proxy will take care of the proper routing. Once DNS plugin is done, you can use proxy + dns together to setup super easy development server, where you can access your apps like <code>http://appname.dev\/</code>.
 
 ## Bundled plugins
 
