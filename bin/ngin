@@ -90,7 +90,6 @@ var options = {
 
 var server = new Server(options);
 server
-  .use(dns)
   .use(logger)
   .use(npm)
   .use(httpproxy, {port: httpPort, domains: {
