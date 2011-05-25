@@ -2,6 +2,26 @@
 
 Extendable node.js application server with plugin support and easy configuration.
 
+## What is ngin.js?
+Its very simple and minimalistic application server. Main target audience are node.js developers, which look for the simple server
+solution for developer machines and testing servers and don't want to build everything ourselves or install complex solutions, which
+could be found online.
+
+To be able to use your applications, you need to maintain your <code>package.json</code> file, which contains all the necessary
+information for ngin server and is the standard way how the node.js application and packages are described.
+
+Start your server is as easy as:
+
+<pre>
+  <code>git clone git://github.com/petrjanda/ngin.git
+  cd ngin/
+  mkdir apps/
+  ln -s /path/to/your/app apps/appname
+  bin/ngin --port 80 apps/</code>
+</pre>
+
+Your server will spawn each application and proxy will take care of the proper routing. Once DNS plugin is done, you can use proxy + dns together to setup super easy development server, where you can access your apps like <code>http://appname.dev/</code>.
+
 ## Bundled plugins
 
 ### NPM
@@ -15,13 +35,13 @@ If you are interested to know, what is happening inside your server, just plugin
 
 ## More plugins to come
 
-## DNS
+### DNS
 The plugin targets mostly developers which would like to use ngin.js without having domain names for each app. You will be able to specify some easy pattern and then access you app easily. Lets say you are working on helloworld app, you can have it accesible by http://helloworld.dev. No need for ports or modifications to your hosts file. @WIP.
 
-## Restarter
+### Restarter
 The main target of ngin.js is to sit on developer machines or testing servers atm. You will deploy lot of new releases to that server and mostly you will need to restart your app once new version is delivered. The Restarted plugin will take care about that. @TBA.
 
-## Git integration
+### Git integration
 Easy deployment with git commands. @TBA.
 
 ## License
