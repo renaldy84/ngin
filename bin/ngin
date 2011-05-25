@@ -8,68 +8,92 @@ var fs = require('fs'),
     npm = require('../lib/ngin/plugins/npm.js'),
     Server = require('../lib/ngin/server.js');
 
+/*
+ * Path to the directory with applications.
+ */
 var path = '.';
 
-var port = null;
+/*
+ * Port for the HTTP proxy.
+ */
+var httpPort = 3000;
 
-var options = {};
-
+/*
+ * Arguments passed to CLI.
+ */
 var args = process.argv.slice(2);
+
+/*
+ * Parse name of the app from command line.
+ */
 var name = process.argv.slice(1)[0].split('/').pop();
 
+/*
+ * Usage for CLI.
+ */
 var usage = [
 	'',
 	'  Usage: ' + name + ' [options] [apps_path]',
 	'',
 	'  Options:',
-	'    -p, --port <port>        server port',
+	'    -p, --port <port>        server HTTP port',
 	'    -v, --version            get current installed version'
 ].join('\n');
 
+/*
+ * Application require at least one argument with applications path.
+ */
 if(args.length == 0)
 	abort(usage);
 
+// Parse arguments from command line.
 while (args.length) {
 	var arg = args.shift();
 
 	switch (arg) {
-		
-		case '-h':
-		case '--help':
-			abort(usage);
-			break;
+    case '-h':
+    case '--help':
+      abort(usage);
+      break;
 
-		case '-p':
-		case '--port':
-			port = args.shift();
-			break;
+    case '-p':
+    case '--port':
+      httpPort = args.shift();
+      break;
 
-		case '-v':
-		case '--version':
-			abort(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8')).version);
-		break;
-		
-		default:
-			path = arg;
+    case '-v':
+    case '--version':
+      abort(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8')).version);
+    break;
+
+    default:
+      path = arg;
   }
 }
 
+/*
+ * Exit the script and print the output to stderr.
+ *
+ * @param {String} Text to be printed to stderr.
+ */
 function abort(str) {
   console.error(str);
   process.exit(1);
 }
 
-options = {
-	port: port || 3000,
+/*
+ * Build up the options for server.
+ */
+var options = {
 	appsPath: path
-}
+};
 
 var server = new Server(options);
 server
-.use(dns)
-.use(logger)
-.use(npm)
-.use(httpproxy, {port: port, domains: {
-  'nginjs.com': 'ngin-docs'
-}})
-.start();
+  .use(dns)
+  .use(logger)
+  .use(npm)
+  .use(httpproxy, {port: httpPort, domains: {
+    'nginjs.com': 'ngin-docs'
+  }})
+  .start();
