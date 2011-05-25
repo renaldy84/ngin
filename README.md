@@ -5,12 +5,12 @@ Extendable node.js application server with plugin support and easy configuration
 ## What is ngin.js?
 Its very simple and minimalistic application server. Main target audience are node.js developers, which look for the simple server
 solution for developer machines and testing servers and don't want to build everything ourselves or install complex solutions, which
-could be found online.
+could be found online. For now best use case is to run multiple node.js http servers within simple manageable app.
 
 To be able to use your applications, you need to maintain your <code>package.json</code> file, which contains all the necessary
 information for ngin server and is the standard way how the node.js application and packages are described.
 
-Start your server is as easy as:
+## Instalation
 
 <pre>
   <code>git clone git://github.com/petrjanda/ngin.git
@@ -20,7 +20,7 @@ Start your server is as easy as:
   bin/ngin --port 80 apps/</code>
 </pre>
 
-Your server will spawn each application and proxy will take care of the proper routing. Once DNS plugin is done, you can use proxy + dns together to setup super easy development server, where you can access your apps like <code>http://appname.dev/</code>.
+Your server will spawn each application and proxy will take care of the proper routing. Once DNS plugin is done, you can use proxy + dns together to setup super easy development server, where you can access your apps like <code>http://appname.dev/.</code>
 
 ## Bundled plugins
 
