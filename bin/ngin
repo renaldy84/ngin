@@ -90,7 +90,7 @@ var options = {
 
 var server = new Server(options);
 server
-  .use(logger)
+  .use(logger, {level: 'info'})
   .use(npm)
   .use(httpproxy, {port: httpPort, domains: {
     'nginjs.com': 'ngin-docs'
