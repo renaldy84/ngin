@@ -93,6 +93,6 @@ server
   .use(logger, {level: 'info'})
   .use(npm)
   .use(httpproxy, {port: httpPort, domains: {
-    'nginjs.com': 'ngin-docs'
+    'localhost': 'express'
   }})
   .start();
